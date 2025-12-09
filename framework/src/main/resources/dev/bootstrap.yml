@@ -1,0 +1,25 @@
+
+spring:
+  application:
+    name: subscribe-framework
+  profiles:
+    active: ${app.profile}
+  cloud:
+    nacos:
+      discovery:
+        ip: ${app.nacos.ip}
+        enabled: ${nacos.discovery.enabled}
+        server-addr: ${app.nacos.server-addr}
+        namespace: ${app.env}
+      config:
+        enabled: ${nacos.config.enabled}
+        server-addr: ${app.nacos.server-addr}
+        namespace: ${app.env}
+        file-extension: yml
+        prefix: ${spring.application.name}
+        refreshable-dataids: app-subscribe.yml
+nacos:
+  discovery:
+    enabled: true
+  config:
+    enabled: true

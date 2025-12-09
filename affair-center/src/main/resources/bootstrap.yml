@@ -1,0 +1,29 @@
+server:
+  port: 11452
+  servlet:
+    context-path: /subscribe/product
+
+spring:
+  application:
+    name: subscribe-product
+  profiles:
+    active: ${app.profile}
+  cloud:
+    nacos:
+      discovery:
+        ip: ${app.nacos.ip}
+        enabled: ${nacos.discovery.enabled}
+        server-addr: ${app.nacos.server-addr}
+        namespace: ${app.env}
+      config:
+        enabled: ${nacos.config.enabled}
+        server-addr: ${app.nacos.server-addr}
+        namespace: ${app.env}
+        file-extension: yml
+        prefix: ${spring.application.name}
+        refreshable-dataids: app-subscribe.yml,app-redis.yml
+nacos:
+  discovery:
+    enabled: true
+  config:
+    enabled: true
