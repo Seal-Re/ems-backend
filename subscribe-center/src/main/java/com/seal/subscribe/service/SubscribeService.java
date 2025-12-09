@@ -25,5 +25,8 @@ public interface SubscribeService extends IService<Subscribe> {
 
     List<String> getMessages(String topic, String url, Integer N);
 
+<<<<<<< HEAD
     List<String> getLatestMsg();
+=======
+>>>>>>> f65081ad70abcacc1de1cc85cbc347d9cf7b615b
 }

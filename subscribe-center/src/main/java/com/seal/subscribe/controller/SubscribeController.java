@@ -38,11 +38,14 @@ public class SubscribeController {
 
         return ApiResponse.success(subscribeService.getMessages(topic, url, N));
     }
+<<<<<<< HEAD
 
     @GetMapping("/getLatestMsg")
     public ApiResponse<List<String>> getLatestMsg(){
 
         return ApiResponse.success(subscribeService.getLatestMsg());
     }
+=======
+>>>>>>> f65081ad70abcacc1de1cc85cbc347d9cf7b615b
 }
 
