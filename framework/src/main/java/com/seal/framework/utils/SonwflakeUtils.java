@@ -43,9 +43,4 @@ public class SonwflakeUtils {
         return snowflake.nextId();
     }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
-            System.out.println(SonwflakeUtils.get().id());
-        }
-    }
 }
