@@ -7,14 +7,6 @@ import com.seal.subscribe.entity.Subscribe;
 
 import java.util.List;
 
-/**
- * <p>
- *  服务类
- * </p>
- *
- * @author seal
- * @since 2025-08-19
- */
 public interface SubscribeService extends IService<Subscribe> {
 
     Response addSubscribe(SubscribeDto subscribeDto);
@@ -25,8 +17,5 @@ public interface SubscribeService extends IService<Subscribe> {
 
     List<String> getMessages(String topic, String url, Integer N);
 
-<<<<<<< HEAD
     List<String> getLatestMsg();
-=======
->>>>>>> f65081ad70abcacc1de1cc85cbc347d9cf7b615b
 }

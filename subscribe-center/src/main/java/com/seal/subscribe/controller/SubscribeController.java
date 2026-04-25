@@ -1,6 +1,5 @@
 package com.seal.subscribe.controller;
 
-
 import com.seal.subscribe.dto.SubscribeDto;
 import com.seal.framework.entity.Response.Response;
 import com.seal.subscribe.entity.Subscribe;
@@ -19,33 +18,27 @@ public class SubscribeController {
     private SubscribeService subscribeService;
 
     @PostMapping("/add")
-    public ApiResponse<Response> subscribeAdd(@RequestBody SubscribeDto subscribeDto){
+    public ApiResponse<Response> subscribeAdd(@RequestBody SubscribeDto subscribeDto) {
         return ApiResponse.success(subscribeService.addSubscribe(subscribeDto));
     }
 
     @PostMapping("/delete")
-    public ApiResponse<Response> subscribeDel(@RequestBody SubscribeDto subscribeDto){
+    public ApiResponse<Response> subscribeDel(@RequestBody SubscribeDto subscribeDto) {
         return ApiResponse.success(subscribeService.delSubscribe(subscribeDto));
     }
 
     @GetMapping("/detect")
-    public ApiResponse<List<Subscribe>> subscribeDetect(){
+    public ApiResponse<List<Subscribe>> subscribeDetect() {
         return ApiResponse.success(subscribeService.detectSubscribe());
     }
 
     @GetMapping("/getMsg")
-    public ApiResponse<List<String>> getMsg(@RequestParam String topic,  @RequestParam String url, @RequestParam Integer N){
-
+    public ApiResponse<List<String>> getMsg(@RequestParam String topic, @RequestParam String url, @RequestParam Integer N) {
         return ApiResponse.success(subscribeService.getMessages(topic, url, N));
     }
-<<<<<<< HEAD
 
     @GetMapping("/getLatestMsg")
-    public ApiResponse<List<String>> getLatestMsg(){
-
+    public ApiResponse<List<String>> getLatestMsg() {
         return ApiResponse.success(subscribeService.getLatestMsg());
     }
-=======
->>>>>>> f65081ad70abcacc1de1cc85cbc347d9cf7b615b
 }
-
