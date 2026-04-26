@@ -2,44 +2,23 @@ package com.seal.framework.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seal.framework.entity.MessageEtt.MessageEtt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageUtils {
 
+    private static final Logger log = LoggerFactory.getLogger(MessageUtils.class);
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
     public MessageEtt create(String messageStr) {
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            MessageEtt messageEtt = mapper.readValue(messageStr, MessageEtt.class);
-            return messageEtt;
+            return mapper.readValue(messageStr, MessageEtt.class);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("消息反序列化失败: {}", messageStr, e);
             return null;
         }
-
-        /*
-        JSONObject jsonObject = JSONObject.parseObject(message);
-
-        String method =  jsonObject.getString("method");
-        JSONObject params = jsonObject.getJSONObject("params");
-
-        String ability =  params.getString("ability");
-        String sendTime = params.getString("sendTime");
-        JSONArray events = params.getJSONArray("events");
-
-        for (Object event : events) {
-            JSONObject eventJson = (JSONObject) event;
-
-            String eventId = eventJson.getString("eventId");
-            Integer eventType = eventJson.getInteger("eventType");
-            String happenTime  = eventJson.getString("happenTime");
-            String srcIndex = eventJson.getString("srcIndex");
-            String srcName = eventJson.getString("srcName");
-            String srcParentIndex = eventJson.getString("srcParentIndex");
-            Integer srcType = eventJson.getInteger("srcType");
-            Integer timeout = eventJson.getInteger("timeout");
-
-        }*/
     }
-
 }

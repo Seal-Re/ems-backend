@@ -8,6 +8,8 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.TransactionMQProducer;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +25,8 @@ import java.util.concurrent.ExecutorService;
 
 @Configuration
 public class MQConfig {
+
+    private static final Logger log = LoggerFactory.getLogger(MQConfig.class);
     @Value("${spring.application.name}")
     private String groupName;//集群名称
 
@@ -68,7 +72,7 @@ public class MQConfig {
                 for (String topicTags : topicTagsArr) {
                     String[] topicTag = topicTags.split("~");//tag
                     consumer.subscribe(topicTag[0], topicTag[1]);//subscribe可以自动识别||
-                    System.out.println(topicTag[0] +  topicTag[1]);
+                    log.debug("subscribe topic={} tag={}", topicTag[0], topicTag[1]);
                 }
             }
             consumer.start();
@@ -109,7 +113,7 @@ public class MQConfig {
         try {
             producer.start();
         } catch (MQClientException e) {
-            System.out.println(e.getErrorMessage());
+            log.error("MQ producer start failed: {}", e.getErrorMessage());
         }
         return producer;
     }
@@ -130,7 +134,7 @@ public class MQConfig {
         try {
             producer.start();
         } catch (MQClientException e) {
-            System.out.println(e.getErrorMessage());
+            log.error("MQ producer start failed: {}", e.getErrorMessage());
         }
         return producer;
     }

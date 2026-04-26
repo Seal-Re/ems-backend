@@ -7,6 +7,8 @@ import org.apache.rocketmq.client.producer.LocalTransactionState;
 import org.apache.rocketmq.client.producer.TransactionListener;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,8 @@ import java.util.Map;
 
 @Component
 public class MQTransactionListener implements TransactionListener {
+
+    private static final Logger log = LoggerFactory.getLogger(MQTransactionListener.class);
     @Autowired
     private Map<String, MQTransactionHandler> mqTransactionHandlerMap;
 
@@ -32,7 +36,7 @@ public class MQTransactionListener implements TransactionListener {
 
     private MQTransactionHandler getListenner(String topic,String tags) {
         MQTransactionHandler mqTransactionHandler = null;
-        System.out.println("接受到的消息主题为tmd：" + topic + "; tag为：" + tags);
+        log.info("事务消息 topic={} tag={}", topic, tags);
         for (Map.Entry<String, MQTransactionHandler> entry : mqTransactionHandlerMap.entrySet()) {
             MQHandlerActualizer msgHandlerActualizer = entry.getValue().getClass().getAnnotation(MQHandlerActualizer.class);
             if (msgHandlerActualizer != null) {
