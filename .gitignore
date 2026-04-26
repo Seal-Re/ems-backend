@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-﻿/target/
-=======
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -34,4 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
->>>>>>> f65081ad70abcacc1de1cc85cbc347d9cf7b615b
+
+### Frontend ###
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/*.tar
+frontend/*.zip

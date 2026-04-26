@@ -1,8 +1,8 @@
-# ems-backend · Spring Cloud Alibaba Event Management Backend
+# ems · Spring Cloud Alibaba + Vue 2 Event Management Full-Stack
 
-> **A Spring Cloud Alibaba microservice backend for an Event Management System (EMS) — Nacos service discovery, RocketMQ async messaging, MyBatis-Plus persistence.**
+> **Full-stack Event Management System — Spring Cloud Alibaba microservices (Nacos discovery, RocketMQ async, MyBatis-Plus) + Vue 2 frontend in `frontend/`.**
 >
-> 基于 Spring Cloud Alibaba 的活动管理系统后端微服务：Nacos 服务注册发现、RocketMQ 异步消息、MyBatis-Plus 持久化，affair-center 与 subscribe-center 双服务解耦。
+> 全栈活动管理系统：Spring Cloud Alibaba 微服务（Nacos 注册发现、RocketMQ 异步消息、MyBatis-Plus）+ Vue 2 前端 (`frontend/`)，affair-center 与 subscribe-center 双服务解耦。
 
 [English](#english) · [中文](#中文)
 
@@ -21,7 +21,7 @@
 
 ```mermaid
 flowchart LR
-    Client["Frontend / API Client"] -->|REST| AffairCenter
+    Client["frontend/\n(Vue 2)"] -->|REST| AffairCenter
 
     subgraph AffairCenter["affair-center (Spring Boot)"]
         AffairController --> AffairService
@@ -43,11 +43,14 @@ flowchart LR
 ## Quickstart
 
 ```bash
+# Backend
 # 1. Start Nacos + RocketMQ + MySQL
 # 2. Configure application.yml for each service (DB, nacos.server-addr, rocketmq.name-server)
-
 cd affair-center && mvn spring-boot:run &
 cd subscribe-center && mvn spring-boot:run
+
+# Frontend (Vue 2)
+cd frontend && npm install && npm run serve
 ```
 
 ## Service Overview
