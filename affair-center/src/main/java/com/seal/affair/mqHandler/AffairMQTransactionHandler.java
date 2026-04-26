@@ -58,7 +58,6 @@ public class AffairMQTransactionHandler implements MQTransactionHandler {
     public LocalTransactionState checkLocalTransaction(MessageExt messageExt) {
         LocalTransactionState state;
         String transactionId = null;
-        System.out.println("111");
         try {
             String body = new String(messageExt.getBody());
             MessageEtt messageEtt = JSONObject.parseObject(body, MessageEtt.class);
