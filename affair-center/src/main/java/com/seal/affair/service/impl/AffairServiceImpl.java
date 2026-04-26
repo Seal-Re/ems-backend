@@ -43,7 +43,7 @@ public class AffairServiceImpl implements AffairService {
                 .collect(Collectors.groupingBy(MessageEvents::getEventType));//将 events 列表按照 eventType 分组
 
         for (Map.Entry<String, List<MessageEvents>> entry : eventsByTopic.entrySet()) {
-            String topic = String.valueOf(entry.getKey());
+            String topic = entry.getKey();
             List<MessageEvents> eventsForTopic = entry.getValue();
 
             MessageEtt newMsgEtt = new MessageEtt();
@@ -57,7 +57,7 @@ public class AffairServiceImpl implements AffairService {
 
             Message message = new Message(topic, "*", bodyBytes);
 
-            System.out.println("topic:" + topic + "message:" + message);
+            log.info("topic: {} message: {}", topic, message);
 
             if (code == 1) {
                 try {
