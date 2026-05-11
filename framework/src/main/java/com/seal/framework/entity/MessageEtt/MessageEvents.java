@@ -1,12 +1,13 @@
 package com.seal.framework.entity.MessageEtt;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
+
+import java.util.Map;
 
 @Data
 public class MessageEvents {
 
-    private JsonNode data;
+    private Map<String, Object> data;
     private String eventId;
     private String eventType;
     private String happenTime;
